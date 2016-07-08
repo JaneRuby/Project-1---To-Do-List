@@ -22,7 +22,7 @@ Below you can find screen shots of what the final product looks like. :)
 
 <p align="center">
   <img src="Screenshots/Screen%20Shot%201.jpg?raw=true" width="250">
-  <img src="Screenshots/Screen%20Shot%202.jpg?raw=true width="250">
+  <img src="Screenshots/Screen%20Shot%202.jpg?raw=true width="200">
   <img src="Screenshots/Screen%20Shot%203jpg.jpg?raw=true" width="250">
   <img src="Screenshots/Screen%20Shot%204.jpg?raw=true" width="250">
    <img src="Screenshots/Screen%20Shot%205.jpg?raw=true" width="250">
