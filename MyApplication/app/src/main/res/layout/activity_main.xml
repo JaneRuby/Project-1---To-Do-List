@@ -8,16 +8,14 @@
 
     <TextView
         android:id="@+id/textView"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:textColor="#000000"
         android:textSize="50sp"
-        android:text="to do lists..."
+        android:text=" to do lists..."
         android:layout_alignParentTop="true"
         android:layout_marginTop="5dp"
-        android:layout_marginBottom="15dp"
-        android:layout_marginLeft="15dp"
-        >
+        android:layout_marginBottom="15dp">
 
     </TextView>
 
@@ -42,9 +40,11 @@
         android:layout_toLeftOf="@+id/btnAddItem"
         android:layout_toStartOf="@+id/btnAddItem"
         android:hint="Enter a new list category"
-        android:textSize="30sp"
+        android:textSize="25sp"
         android:textColor="#000000"
+        android:textColorHint="#BDBDBD"
         android:singleLine="true"
+        android:background="#FFFFFF"
         />
 
     <Button
@@ -55,7 +55,9 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:onClick="onAddItem"
-        android:text="Add List" />
+        android:text="Add List"
+        android:background="@android:color/darker_gray"
+        android:textColor="@android:color/black"/>
 
 </RelativeLayout>
 

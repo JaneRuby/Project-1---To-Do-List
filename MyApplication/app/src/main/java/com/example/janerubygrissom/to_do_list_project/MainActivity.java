@@ -35,9 +35,6 @@ public class MainActivity extends Activity {
     RecyclerView mRecyclerView;
 
 
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -51,12 +48,12 @@ public class MainActivity extends Activity {
 
         lvItems = (ListView) findViewById(R.id.listview);
         items = robertZimmerman.bobDylan;
-        Log.e("monkey","");
 
 
         mAdapter = new ObjectAdapter2(this, android.R.layout.simple_list_item_1, items);
         //itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
         lvItems.setAdapter(mAdapter);
+
 
 
         setupListViewListener();
@@ -69,7 +66,6 @@ public class MainActivity extends Activity {
         if (etNewItem.getText().toString().equals("")) {
             etNewItem.setError("Please enter text!");
         } else {
-
 
             items.add(new CustomObject2(itemText, new ArrayList<CustomObject>(), "#6200EA"));
             etNewItem.setText("");

@@ -6,12 +6,12 @@ package com.example.janerubygrissom.to_do_list_project;
 
 public class CustomObject {
     private String mTitle;
-    private String mDescription;
+//    private String mDescription;
     private String mColor;
 
     public CustomObject() {
         this.mTitle = "Title Text";
-        this.mDescription = "Description Text";
+//        this.mDescription = "Description Text";
         this.mColor = "#6200EA";
 
     }
@@ -19,7 +19,7 @@ public class CustomObject {
     public CustomObject(String mTitle, String mDescription, String mColor) {
 
         this.mTitle = mTitle;
-        this.mDescription = mDescription;
+//        this.mDescription = mDescription;
         this.mColor = mColor;
     }
 
@@ -31,13 +31,13 @@ public class CustomObject {
         this.mTitle = mTitle;
     }
 
-    public String getDescription() {
-        return mDescription;
-    }
-
-    public void setDescription(String mDescription) {
-        this.mDescription = mDescription;
-    }
+//    public String getDescription() {
+//        return mDescription;
+//    }
+//
+//    public void setDescription(String mDescription) {
+//        this.mDescription = mDescription;
+//    }
 
     public String getColor() {
         return mColor;

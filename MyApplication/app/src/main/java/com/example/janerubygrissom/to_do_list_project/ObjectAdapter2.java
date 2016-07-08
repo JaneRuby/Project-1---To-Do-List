@@ -27,6 +27,7 @@ public class ObjectAdapter2 extends ArrayAdapter<CustomObject2>{
         }
         TextView txt = (TextView) convertView.findViewById(android.R.id.text1);
         txt.setText(object.getTitle());
+        txt.setTextSize(30);
 
         return convertView;
     }
