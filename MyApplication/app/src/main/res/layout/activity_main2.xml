@@ -3,7 +3,8 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Main2Activity">
+    tools:context=".Main2Activity"
+    android:background="@drawable/pastel1">
 
     <ListView
         android:layout_width="wrap_content"
@@ -12,7 +13,11 @@
         android:layout_alignParentTop="true"
         android:layout_alignParentLeft="true"
         android:layout_alignParentStart="true"
-        android:layout_above="@+id/btnAddItem" >
+        android:layout_above="@+id/btnAddItem"
+        android:layout_marginBottom="20dp"
+        android:layout_marginTop="20dp"
+        >
+
         </ListView>
 
     <EditText
@@ -20,22 +25,26 @@
         android:layout_height="wrap_content"
         android:id="@+id/etNewItem"
         android:layout_alignTop="@+id/btnAddItem"
-        android:hint="Enter a new item"
+        android:hint="Enter a new list item and detail"
         android:layout_alignParentLeft="true"
-        android:layout_alignParentStart="true"
+        android:layout_alignParentBottom="true"
         android:layout_toLeftOf="@+id/btnAddItem"
         android:layout_toStartOf="@+id/btnAddItem"
-        android:layout_alignParentBottom="true" />
+        android:textSize="30sp"
+        android:textColor="#000000"
+        android:singleLine="true"/>
+
 
     <Button
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:text="Add Item"
-        android:id="@+id/btnAddItem"
         android:layout_alignParentBottom="true"
+        android:id="@+id/btnAddItem"
         android:layout_alignParentRight="true"
         android:layout_alignParentEnd="true"
         android:onClick="onAddItem"
         />
+
 
 </RelativeLayout>

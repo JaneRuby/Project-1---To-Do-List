@@ -9,13 +9,13 @@ import java.util.List;
 public class CustomObject2 {
     private String mTitle;
     private String mColor;
+//    private String mDescription;
 
     List<CustomObject> listOfCustom;
 
     public CustomObject2() {
         this.mTitle = "Title Text";
         this.listOfCustom = new ArrayList<>();
-
         this.mColor = "#6200EA";
 
     }
@@ -24,6 +24,7 @@ public class CustomObject2 {
 
         this.mTitle = mTitle;
         this.mColor = mColor;
+//        this.mDescription  = mDescription;
         this.listOfCustom = listOfCustom;
     }
 
@@ -42,6 +43,10 @@ public class CustomObject2 {
     public void setColor(String mColor) {
         this.mColor = mColor;
     }
+
+//    public String getDescription(){ return mDescription; }
+//
+//    public void setmDescription(String mDescription) { this.mDescription = mDescription; }
 
     public List<CustomObject> getListOfCustom() {
         return listOfCustom;

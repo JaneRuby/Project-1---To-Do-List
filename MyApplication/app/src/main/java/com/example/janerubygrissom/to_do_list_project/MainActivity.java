@@ -4,6 +4,7 @@ import android.app.Activity;
 import android.content.ContentValues;
 import android.content.DialogInterface;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AlertDialog;
@@ -33,6 +34,10 @@ public class MainActivity extends Activity {
     Singleton robertZimmerman;
     RecyclerView mRecyclerView;
 
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -40,11 +45,14 @@ public class MainActivity extends Activity {
 
         robertZimmerman = Singleton.getInstance();
 
+
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        toolbar.setTextTitle("MAinlist");
 
         lvItems = (ListView) findViewById(R.id.listview);
         items = robertZimmerman.bobDylan;
+        Log.e("monkey","");
+
 
         mAdapter = new ObjectAdapter2(this, android.R.layout.simple_list_item_1, items);
         //itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
@@ -57,9 +65,17 @@ public class MainActivity extends Activity {
     public void onAddItem(View v) {
         EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
         String itemText = etNewItem.getText().toString();
-        items.add(new CustomObject2(itemText, new ArrayList<CustomObject>(), "#6200EA"));
-        etNewItem.setText("");
-        mAdapter.notifyDataSetChanged();
+
+        if (etNewItem.getText().toString().equals("")) {
+            etNewItem.setError("Please enter text!");
+        } else {
+
+
+            items.add(new CustomObject2(itemText, new ArrayList<CustomObject>(), "#6200EA"));
+            etNewItem.setText("");
+            mAdapter.notifyDataSetChanged();
+
+        }
     }
 
     private void setupListViewListener() {
