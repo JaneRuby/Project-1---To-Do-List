@@ -21,7 +21,7 @@ Features:
 Below you can find screen shots of what the final product looks like. :)
 
 <p align="center">
-  <img src="screenshots/Screen Shot 1.jpg" width="250">
+  <img src="Screenshots/Screen%20Shot%201.jpg?raw=true" width="250">
   <img src="screenshots/Screen Shot 2.jpg" width="250">
   <img src="screenshots/Screen Shot 3.jpg" width="250">
   <img src="screenshots/Screen Shot 4.jpg" width="250">
