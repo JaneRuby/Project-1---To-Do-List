@@ -1,5 +1,6 @@
 package com.example.janerubygrissom.to_do_list_project;
 
+import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
 
@@ -8,7 +9,7 @@ import java.util.List;
  */
 public class Singleton {
 
-    List <CustomObject2> bobDylan;
+    ArrayList<CustomObject2> bobDylan = new ArrayList<>();
 
     private static Singleton ourInstance = new Singleton();
 
@@ -18,12 +19,21 @@ public class Singleton {
 
     private Singleton() {
 
-        bobDylan = new LinkedList<>();
+        bobDylan = new ArrayList<>();
 
 
     }
 
-    public List <CustomObject> getBobDylan(int i){
+    public ArrayList<CustomObject2> getBobDylan() {
+        return bobDylan;
+    }
+
+    public void setBobDylan(ArrayList<CustomObject2> bobDylan) {
+        this.bobDylan = bobDylan;
+    }
+
+
+    public List <CustomObject> getBobDylan2(int i){
         return bobDylan.get(i).getListOfCustom();
     }
 }

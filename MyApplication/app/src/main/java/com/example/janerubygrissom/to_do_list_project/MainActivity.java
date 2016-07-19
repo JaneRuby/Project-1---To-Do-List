@@ -17,6 +17,7 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
+import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ListView;
 import android.widget.TextView;
@@ -27,12 +28,14 @@ import java.util.List;
 
 
 public class MainActivity extends Activity {
-    private List<CustomObject2> items;
+    private ArrayList<CustomObject2> items;
     private ArrayAdapter<CustomObject2> itemsAdapter;
-    private ListView lvItems;
+    private RecyclerView lvItems;
     ObjectAdapter2 mAdapter;
     Singleton robertZimmerman;
     RecyclerView mRecyclerView;
+    Button button;
+    EditText editText;
 
 
     @Override
@@ -46,59 +49,81 @@ public class MainActivity extends Activity {
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        toolbar.setTextTitle("MAinlist");
 
-        lvItems = (ListView) findViewById(R.id.listview);
+        lvItems = (RecyclerView) findViewById(R.id.listview);
         items = robertZimmerman.bobDylan;
+        button = (Button) findViewById(R.id.btnAddItem);
+        editText = (EditText) findViewById(R.id.etNewItem);
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        lvItems.setLayoutManager(llm);
+
+        //For a listView adapter:
+//
+//        mAdapter = new ObjectAdapter2(this, android.R.layout.simple_list_item_1, items);
+//        //itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
+//        lvItems.setAdapter(mAdapter);
+//
+//
+//
+//        setupListViewListener();
+
+        final RecyclerViewAdapter recyclerViewAdapter = new RecyclerViewAdapter(items);
 
 
-        mAdapter = new ObjectAdapter2(this, android.R.layout.simple_list_item_1, items);
-        //itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
-        lvItems.setAdapter(mAdapter);
+        lvItems.setAdapter(recyclerViewAdapter);
 
-
-
-        setupListViewListener();
-    }
-
-    public void onAddItem(View v) {
-        EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
-        String itemText = etNewItem.getText().toString();
-
-        if (etNewItem.getText().toString().equals("")) {
-            etNewItem.setError("Please enter text!");
-        } else {
-
-            items.add(new CustomObject2(itemText, new ArrayList<CustomObject>(), "#6200EA"));
-            etNewItem.setText("");
-            mAdapter.notifyDataSetChanged();
-
-        }
-    }
-
-    private void setupListViewListener() {
-        lvItems.setOnItemLongClickListener(
-                new AdapterView.OnItemLongClickListener() {
-                    @Override
-                    public boolean onItemLongClick(AdapterView<?> adapter,
-                                                   View item, int pos, long id) {
-                        // Remove the item within array at position
-                        items.remove(pos);
-                        // Refresh the mAdapter
-                        mAdapter.notifyDataSetChanged();
-
-                        // Return true consumes the long click event (marks it handled)
-                        return true;
-                    }
-
-                });
-        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+        button.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
-                Intent intent = new Intent(view.getContext(), Main2Activity.class);
-                intent.putExtra("position", i);
-                startActivity(intent);
+            public void onClick(View view) {
+                String listTitle = editText.getText().toString();
+                items.add(new CustomObject2(listTitle, "something"));
+                editText.setText("");
+                recyclerViewAdapter.notifyDataSetChanged();
+
             }
         });
     }
+
+//    public void onAddItem(View v) {
+//        EditText etNewItem = (EditText) findViewById(R.id.etNewItem);
+//        String itemText = etNewItem.getText().toString();
+//
+//        if (etNewItem.getText().toString().equals("")) {
+//            etNewItem.setError("Please enter text!");
+//        } else {
+//
+//            items.add(new CustomObject2(itemText, new ArrayList<CustomObject>(), "#6200EA"));
+//            etNewItem.setText("");
+//            mAdapter.notifyDataSetChanged();
+//
+//        }
+//    }
+
+//    private void setupListViewListener() {
+//        lvItems.setOnItemLongClickListener(
+//                new AdapterView.OnItemLongClickListener() {
+//                    @Override
+//                    public boolean onItemLongClick(AdapterView<?> adapter,
+//                                                   View item, int pos, long id) {
+//                        // Remove the item within array at position
+//                        items.remove(pos);
+//                        // Refresh the mAdapter
+//                        mAdapter.notifyDataSetChanged();
+//
+//                        // Return true consumes the long click event (marks it handled)
+//                        return true;
+//                    }
+//
+//                });
+//        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//                Intent intent = new Intent(view.getContext(), Main2Activity.class);
+//                intent.putExtra("position", i);
+//                startActivity(intent);
+//            }
+//        });
+//    }
 }
 
 

@@ -8,6 +8,7 @@ import android.content.SharedPreferences;
 import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
+import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
@@ -25,7 +26,7 @@ public class Main2Activity extends AppCompatActivity {
 
     private List<CustomObject> items;
     private ArrayAdapter<CustomObject> itemsAdapter;
-    private ListView lvItems;
+    private RecyclerView lvItems;
     ObjectAdapter mAdapter;
     Singleton robertZimmerman;
     List<CustomObject> customObjects;
@@ -37,27 +38,35 @@ public class Main2Activity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main2);
         robertZimmerman = Singleton.getInstance();
-        customObjects = robertZimmerman.getBobDylan(getIntent().getIntExtra("position", 0));
-        items = customObjects;
+//        customObjects = robertZimmerman.getBobDylan(getIntent().getIntExtra("position", 0));
+//        items = customObjects;
 
 //        Toolbar toolbar = findViewById(R.id.toolbar);
 //        toolbar.setTextTitle("MAinlist");
 
-        lvItems = (ListView) findViewById(R.id.lvItems);
-        mAdapter = new ObjectAdapter(this, android.R.layout.simple_list_item_1, items);
-       //itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
-       lvItems.setAdapter(mAdapter);
+        lvItems = (RecyclerView) findViewById(R.id.lvItems);
+
+        LinearLayoutManager llm = new LinearLayoutManager(this);
+        llm.setOrientation(LinearLayoutManager.VERTICAL);
+        lvItems.setLayoutManager(llm);
 
 
-        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
-            @Override
-            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+        //For listView adapter:
 
-//                onCreateDialog();
-            }
-        });
-
-       setupListViewListener();
+//        mAdapter = new ObjectAdapter(this, android.R.layout.simple_list_item_1, items);
+//       //itemsAdapter = new ArrayAdapter<>(this, android.R.layout.simple_list_item_1, items);
+//       lvItems.setAdapter(mAdapter);
+//
+//
+//        lvItems.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+//            @Override
+//            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+//
+////                onCreateDialog();
+//            }
+//        });
+//
+//       setupListViewListener();
     }
 
     public void onAddItem(View v) {
@@ -80,23 +89,23 @@ public class Main2Activity extends AppCompatActivity {
     }
 
 
-        private void setupListViewListener() {
-        lvItems.setOnItemLongClickListener(
-                new AdapterView.OnItemLongClickListener() {
-                    @Override
-                    public boolean onItemLongClick(AdapterView<?> adapter,
-                                                   View item, int pos, long id) {
-                        // Remove the item within array at position
-                        items.remove(pos);
-                        // Refresh the mAdapter
-                        mAdapter.notifyDataSetChanged();
-
-                        // Return true consumes the long click event (marks it handled)
-                        return true;
-                    }
-
-                });
-    }
+//        private void setupListViewListener() {
+//        lvItems.setOnItemLongClickListener(
+//                new AdapterView.OnItemLongClickListener() {
+//                    @Override
+//                    public boolean onItemLongClick(AdapterView<?> adapter,
+//                                                   View item, int pos, long id) {
+//                        // Remove the item within array at position
+//                        items.remove(pos);
+//                        // Refresh the mAdapter
+//                        mAdapter.notifyDataSetChanged();
+//
+//                        // Return true consumes the long click event (marks it handled)
+//                        return true;
+//                    }
+//
+//                });
+//    }
 
 }
 

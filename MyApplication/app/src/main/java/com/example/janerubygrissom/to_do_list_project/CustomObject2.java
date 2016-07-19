@@ -20,7 +20,7 @@ public class CustomObject2 {
 
     }
 
-    public CustomObject2(String mTitle, ArrayList <CustomObject> listOfCustom, String mColor) {
+    public CustomObject2(String mTitle, String mColor) {
 
         this.mTitle = mTitle;
         this.mColor = mColor;
