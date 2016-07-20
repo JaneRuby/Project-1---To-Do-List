@@ -22,6 +22,7 @@ public class MainActivity2 extends AppCompatActivity {
     RecyclerViewAdapter2 recyclerViewAdapter2;
 
 
+
     //positioning the list items into the recycler view
     RecyclerView mRecyclerView;
     int position;
@@ -57,12 +58,15 @@ public class MainActivity2 extends AppCompatActivity {
         button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+
                 String listTitle = editText.getText().toString();
                 MainObject mainObject = otherSingleton.getmMainObjectArrayList().get(0);
                 mainObject.getmDetailsObject().add(new DetailsObject(listTitle, "Test"));
 //                items.add(new MainObject(listTitle, new ArrayList<DetailsObject>()));
                 editText.setText("");
                 recyclerViewAdapter2.notifyDataSetChanged();
+
+
             }
         });
 
