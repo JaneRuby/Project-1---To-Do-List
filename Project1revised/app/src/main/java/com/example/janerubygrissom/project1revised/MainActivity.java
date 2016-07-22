@@ -49,9 +49,9 @@ public class MainActivity extends AppCompatActivity {
                 items.add(new MainObject(listTitle, new ArrayList<DetailsObject>()));
                 editText.setText("");
                 recyclerViewAdapter.notifyDataSetChanged();
-
             }
         });
+
     }
 }
 

@@ -14,21 +14,7 @@
         android:padding="10dp"
         android:background="@color/transparentWhite"
         android:layout_above="@+id/etNewItem"
-        android:layout_below="@+id/textView"/>
-
-
-    <TextView
-        android:id="@+id/textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:textColor="#000000"
-        android:textSize="45sp"
-        android:text=" to do lists..."
-        android:layout_alignParentTop="true"
-        android:layout_marginTop="5dp"
-        android:layout_marginBottom="15dp">
-
-    </TextView>
+        />
 
     <EditText
         android:id="@+id/etNewItem"

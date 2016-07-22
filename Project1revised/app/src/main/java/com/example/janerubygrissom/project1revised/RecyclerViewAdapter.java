@@ -39,9 +39,12 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
         Singleton singleton = Singleton.getInstance();
 //        CustomObject2 customObject2 = new CustomObject2("hi", "badfaflah");
-        ArrayList<MainObject> mainObjects = singleton.getmMainObjectArrayList();
+        final ArrayList<MainObject> mainObjects = singleton.getmMainObjectArrayList();
         String title = mainObjects.get(position).getmTitle();
         holder.textView.setText(title);
+
+        //TODO holder.card.setOnLongClickListener();
+
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -52,6 +55,18 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
                 Context context = view.getContext();
                 context.startActivity(intent);
 
+            }
+        });
+
+        holder.card.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+                mainObjects.remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, mainObjectArrayList.size());
+                notifyDataSetChanged();
+                //delete stuff
+                return true;
             }
         });
 
@@ -79,7 +94,6 @@ public class RecyclerViewAdapter extends RecyclerView.Adapter<RecyclerViewAdapte
 
             textView = (TextView) itemView.findViewById(R.id.recyclerViewOne);
             card = (CardView) itemView.findViewById(R.id.card);
-
 
         }
 

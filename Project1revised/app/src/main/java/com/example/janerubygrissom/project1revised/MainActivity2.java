@@ -8,6 +8,7 @@ import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
 import android.view.View;
 import android.view.inputmethod.InputMethodManager;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.EditText;
 
@@ -20,7 +21,6 @@ public class MainActivity2 extends AppCompatActivity {
     Button button;
     EditText editText;
     RecyclerViewAdapter2 recyclerViewAdapter2;
-
 
 
     //positioning the list items into the recycler view
@@ -72,6 +72,8 @@ public class MainActivity2 extends AppCompatActivity {
 
         InputMethodManager imm = (InputMethodManager) getSystemService(Context.INPUT_METHOD_SERVICE);
         imm.hideSoftInputFromWindow(editText.getWindowToken(), 0);
+
     }
+
 }
 

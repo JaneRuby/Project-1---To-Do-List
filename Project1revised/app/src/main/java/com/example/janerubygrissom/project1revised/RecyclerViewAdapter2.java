@@ -16,6 +16,8 @@ import android.widget.Toast;
  * Created by janerubygrissom on 7/18/16.
  */
 public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapter2.ViewHolder> {
+    TextView textView;
+    CardView card;
     MainObject mainObject;
 
     public RecyclerViewAdapter2(MainObject mainObject) {
@@ -29,6 +31,7 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
         View layoutView = LayoutInflater.from(parent.getContext()).inflate(R.layout.recycler_view_two, parent, false);
         ViewHolder viewTwo = new ViewHolder(layoutView);
         return viewTwo;
+
     }
 
     //binds the info from the first activity to the second so it knows where it goes
@@ -36,14 +39,30 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     @Override
     public void onBindViewHolder(final ViewHolder holder, final int position) {
         Singleton singleton = Singleton.getInstance();
-        String description = mainObject.getmDetailsObject().get(position).getmDescription();
+        final String description = mainObject.getmDetailsObject().get(position).getmDescription();
         holder.textView.setText(description);
+
+       //TODO holder.card.setOnLongClickListener();
+
+        holder.card.setOnLongClickListener(new View.OnLongClickListener() {
+            @Override
+            public boolean onLongClick(View view) {
+
+                mainObject.getmDetailsObject().remove(position);
+                notifyItemRemoved(position);
+                notifyItemRangeChanged(position, mainObject.getmDetailsObject().size());
+                notifyDataSetChanged();
+
+                //delete stuff
+                return true;
+            }
+        });
+
 
         holder.card.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 Toast.makeText(view.getContext(), "Clicked", Toast.LENGTH_SHORT).show();
-
 
 
                 final AlertDialog.Builder dialogBuilder = new AlertDialog.Builder(view.getContext());
@@ -64,16 +83,12 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
                         String one = mEditTextOne.getText().toString().trim();
 
 
-                        if( one == "" ) {
+                        if (one == "") {
                             mEditTextOne.setError("Not valid entry");
-                        }
-
-                        else if(one.isEmpty()){
+                        } else if (one.isEmpty()) {
                             mEditTextOne.setError("Can't leave empty");
 
-                        }
-
-                        else{
+                        } else {
                             mainObject.getmDetailsObject().get(position).setmDescription(one);
                             String temp = mainObject.getmDetailsObject().get(position).getmDescription();
 
@@ -98,16 +113,11 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
                 final AlertDialog bundler = dialogBuilder.create();
 
                 bundler.show();
-
-
-
             }
+
+
         });
-        //TODO //set dialog box here (don't forget to do the xml layout for it)
-        //TODO //add details to object
     }
-
-
 
 
     //returns the details of the object
@@ -127,6 +137,8 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
 
             textView = (TextView) itemView.findViewById(R.id.recyclerViewTwo);
             card = (CardView) itemView.findViewById(R.id.card);
+
+
         }
     }
 }
