@@ -95,7 +95,8 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
 //                            mainObject.getmDetailsObject().get(position).setmDetail(one);
                             String title = mainObject.getmDetailsObject().get(position).getmDetail();
 
-                            holder.textView.setText(title + "\n" + temp);
+                            holder.textView.setText(title);
+                            holder.textView2.setText(temp);
 //                            adapterFirst.notifyDataSetChanged();
 //                            dialogInterface.dismiss();
                         }
@@ -130,11 +131,13 @@ public class RecyclerViewAdapter2 extends RecyclerView.Adapter<RecyclerViewAdapt
     //identifies the placement of the edit text info
     public class ViewHolder extends RecyclerView.ViewHolder {
         TextView textView;
+        TextView textView2;
         CardView card;
 
         public ViewHolder(View itemView) {
             super(itemView);
 
+            textView2 = (TextView) itemView.findViewById(R.id.recyclerViewTwo2);
             textView = (TextView) itemView.findViewById(R.id.recyclerViewTwo);
             card = (CardView) itemView.findViewById(R.id.card);
 
